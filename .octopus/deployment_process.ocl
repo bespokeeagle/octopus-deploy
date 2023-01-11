@@ -1,0 +1,18 @@
+step "print-hello" {
+    name = "Print Hello "
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                #! /bin/bash
+                
+                echo " Hello World! and how are you today "
+            EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+        }
+        worker_pool = "hosted-ubuntu"
+    }
+}
